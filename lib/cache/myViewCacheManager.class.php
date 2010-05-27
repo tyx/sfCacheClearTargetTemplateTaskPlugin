@@ -19,17 +19,17 @@ class myViewCacheManager extends sfViewCacheManager
 {  
   public function removeAppCache($paths, $app, $baseurl = '')
   {
-    $this->cache->setOption('prefix', sfConfig::get('sf_apps_dir').'/'.$app.'/template:'.$baseurl);
+    $this->cache->setOption('prefix', sfConfig::get('sf_apps_dir').'/'.$app.'/template:');
 
     foreach ($paths as $path)
     {
       if (strstr($path, '*') !== false)
       {
-        $this->cache->removePattern($path);
+        $this->cache->removePattern('/'.$this->getCacheKeyHostNamePart($baseurl).$path);
       }
       else
       {      
-        $this->cache->remove($this->generateCacheKey($path));
+        $this->cache->remove($this->generateCacheKey($path, $baseurl));
       }
     }
   }

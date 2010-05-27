@@ -24,14 +24,14 @@ class sfCacheClearTargetTemplateTask extends sfCacheClearTask
   protected function configure()
   {
     $this->addArguments(array(
+      new sfCommandArgument('baseurl', sfCommandArgument::REQUIRED, 'Base URL'),
       new sfCommandArgument('target', sfCommandArgument::REQUIRED, 'Target templates')
     ));
     
     $this->addOptions(array(
       new sfCommandOption('app', null, sfCommandOption::PARAMETER_OPTIONAL, 'The application name', null),
       new sfCommandOption('env', null, sfCommandOption::PARAMETER_OPTIONAL, 'The environment', null),
-      new sfCommandOption('type', null, sfCommandOption::PARAMETER_OPTIONAL, 'The type', 'target'),
-      new sfCommandOption('baseurl', null, sfCommandOption::PARAMETER_OPTIONAL, 'Base URL', '/www_chambresapart_fr')
+      new sfCommandOption('type', null, sfCommandOption::PARAMETER_OPTIONAL, 'The type', 'target')
     ));
 
     $this->aliases = array('ctt');
@@ -48,7 +48,7 @@ EOF;
   protected function execute($arguments = array(), $options = array())
   {
     $this->targetTemplate = $arguments['target'];
-    $this->baseurl = $options['baseurl'];
+    $this->baseurl = $arguments['baseurl'];
     
     parent::execute($arguments, $options);
   }
