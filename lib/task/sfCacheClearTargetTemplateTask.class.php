@@ -35,8 +35,8 @@ class sfCacheClearTargetTemplateTask extends sfCacheClearTask
     ));
 
     $this->aliases = array('ctt');
-    $this->namespace = 'cache-target-template';
-    $this->name = 'clear';
+    $this->namespace = 'cache';
+    $this->name = 'clear-target-template';
     $this->briefDescription = 'Clears the target template';
 
     $this->detailedDescription = <<<EOF
