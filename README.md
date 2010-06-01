@@ -24,6 +24,7 @@ You need to customize view_cache_manager factories (in factories.yml) to add met
 As the class extends sfViewCacheManager class, it follows the same usage then.
 
 Then, juste use the new task cache:clear-target-template (or use ctt alias) as following:
- * cache:clear-target-template --app=<APP> --env=<ENV> <BASEURL> <TEMPLATE>
+ * cache:clear-target-template --app=APP --env=ENV BASEURL TEMPLATE
 
-<TEMPLATE> could be a template like news/show or group templates like /all/news/show/*   
+BASEURL is website url in general
+TEMPLATE could be a template like news/show or group templates like /all/news/show/*   
